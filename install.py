@@ -1,6 +1,19 @@
 import os
 import stat
-import pathlib
+import subprocess
+
+if os.getuid() != 0:
+    print('You must be root to install.  Exiting...')
+    exit()
+
+if 'not enough args' not in subprocess.getoutput('/sbin/ufw'):
+    print('ufw is not installed.  Exiting...')
+    exit()
+
+if 'usage: git' not in subprocess.getoutput('/bin/git'):
+    print('git is not installed.  Exiting...')
+    exit()
+
 
 data_path = '/var/lib/BotsBeGone'
 bin_path = os.path.join(data_path, 'BotsBeGone')
