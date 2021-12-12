@@ -9,8 +9,11 @@ os.system(f'/bin/git -C {os.path.join(data_path, "git")} pull origin')
 with open(os.path.join(data_path, 'BotsBeGone', 'ip_addresses.json')) as new_file:
     new_data = json.load(new_file)
 
-with open(os.path.join(data_path, 'local', 'ip_addresses.json')) as old_file:
-    old_data = json.load(old_file)
+local_file_path = os.path.join(data_path, 'local', 'ip_addresses.json')
+old_data = {}
+if os.path.exists(local_file_path):
+    with open(os.path.join(data_path, 'local', 'ip_addresses.json')) as old_file:
+        old_data = json.load(old_file)
 
 new_addresses = []
 removed_addresses = []
