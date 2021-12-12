@@ -1,7 +1,0 @@
-[Unit]
-Description=BotsBeGone firewall service update
-
-[Service]
-Type=simple
-ExecStart=/var/lib/BotsBeGone/BotsBeGone/botsbegone.py
-Restart=no
