@@ -4,7 +4,7 @@ import json
 import ipaddress
 
 data_path = '/var/lib/BotsBeGone'
-os.system(f'/bin/git -C {os.path.join(data_path, "git")} pull origin')
+os.system(f'/bin/git -C {os.path.join(data_path, "BotsBeGone")} pull origin')
 
 with open(os.path.join(data_path, 'BotsBeGone', 'ip_addresses.json')) as new_file:
     new_data = json.load(new_file)
@@ -14,6 +14,9 @@ old_data = {}
 if os.path.exists(local_file_path):
     with open(os.path.join(data_path, 'local', 'ip_addresses.json')) as old_file:
         old_data = json.load(old_file)
+else:
+    # this directory needs to exist to save data
+    os.mkdir(os.path.join(data_path, 'local'))
 
 new_addresses = []
 removed_addresses = []

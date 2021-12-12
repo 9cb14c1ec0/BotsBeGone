@@ -27,3 +27,6 @@ os.system(f'cp {os.path.join(bin_path, "botsbegone.timer")} /etc/systemd/system/
 os.system(f'cp {os.path.join(bin_path, "botsbegone.service")} /etc/systemd/system/botsbegone.service')
 os.system('systemctl daemon-reload')
 os.system('systemctl enable --now botsbegone.timer')
+
+# do initial run
+os.system('/bin/python3 /var/lib/BotsBeGone/BotsBeGone/botsbegone.py')
