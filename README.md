@@ -4,8 +4,8 @@ updates to firewall rules keep you protected.
 
 ##Prerequites
 BotsBeGone depends on the `ufw` and `git` utilities to manage firewall.  Installation 
-will fail if `ufw` or `git` are not present.  This software has only been tested on Debian
-based distros and may fail to run on anything else.
+will fail if `ufw` or `git` are not present.  This software has only been tested on
+Debian 11 and Fedora 35 and may fail to run on anything else.
 
 ##Installation
 To install, run these commands as root.
