@@ -26,7 +26,7 @@ for ip_address in new_data:
     if ip_address not in old_data:
         # roundtrip through the ipaddress library to prevent command injections in case of source repository compromise
         i = str(ipaddress.ip_address(ip_address))
-        os.system(f'ufw prepend deny from {i}')
+        os.system(f'ufw insert 1 deny from {i}')
 
 # ip addresses to delete
 for ip_address in old_data:
