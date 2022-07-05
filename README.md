@@ -1,6 +1,7 @@
 #BotsBeGone
 Threat intel on current botnets seeking to ensnare your linux servers.  Daily
-updates to firewall rules keep you protected.
+updates to firewall rules keep you protected.  This ip address database contains over 19,000
+currently infected IP addresses
 
 ##Prerequites
 BotsBeGone depends on the `ufw` and `git` utilities to manage firewall.  Installation 
