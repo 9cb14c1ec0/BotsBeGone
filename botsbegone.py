@@ -22,7 +22,6 @@ new_addresses = []
 removed_addresses = []
 
 # new ip addresses
-os.system('ufw disable')
 with open('/etc/ufw/user.rules') as ur:
     rules = ur.read()
 
@@ -40,7 +39,7 @@ for ip_address in new_data:
 finished_data += tail
 with open('/etc/ufw/user.rules', 'w') as ur:
     ur.write(finished_data)
-os.system('ufw enable')
+os.system('systemctl force-reload ufw.service')
 
 # ip addresses to delete
 for ip_address in old_data:
