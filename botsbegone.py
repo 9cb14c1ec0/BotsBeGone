@@ -22,11 +22,25 @@ new_addresses = []
 removed_addresses = []
 
 # new ip addresses
+os.system('ufw disable')
+with open('/etc/ufw/user.rules') as ur:
+    rules = ur.read()
+
+head, separator, tail = rules.partition('### RULES ###')
+finished_data = head + separator
+
 for ip_address in new_data:
     if ip_address not in old_data:
         # roundtrip through the ipaddress library to prevent command injections in case of source repository compromise
         i = str(ipaddress.ip_address(ip_address))
-        os.system(f'ufw insert 1 deny from {i}')
+        rule_proto = f'''\n\n### tuple ### deny any any 0.0.0.0/0 any {ip_address} in
+-A ufw-user-input -s {i} -j DROP'''
+        finished_data += rule_proto
+
+finished_data += tail
+with open('/etc/ufw/user.rules', 'w') as ur:
+    ur.write(finished_data)
+os.system('ufw enable')
 
 # ip addresses to delete
 for ip_address in old_data:
